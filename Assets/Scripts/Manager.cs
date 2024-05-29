@@ -9,7 +9,8 @@ using UnityEngine.SceneManagement;
 public class Manager : NetworkManager
 {
     public GameObject LobbyPlayerPrefab;
-   
+    int i;
+    
     public List<GameObject> Players = new List<GameObject>();
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
@@ -21,8 +22,8 @@ public class Manager : NetworkManager
         }
         if (SceneManager.GetActiveScene().name == "Lobby")
         {
-            
             GameObject player = Instantiate(LobbyPlayerPrefab);
+            player.name = "player " + i++;
             NetworkServer.AddPlayerForConnection(conn, player);
             CSteamID steamID = SteamMatchmaking.GetLobbyMemberByIndex(SteamLobby.LobbyId, numPlayers - 1);
             var playerName = player.GetComponent<PlayerLobby>();
