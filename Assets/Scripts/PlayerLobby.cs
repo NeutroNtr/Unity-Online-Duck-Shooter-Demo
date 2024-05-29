@@ -85,11 +85,10 @@ public class PlayerLobby : NetworkBehaviour
 
     private void Update()
     {
-        if(authority == false)
-        {
-            Debug.LogError(authority);
+        
+            Debug.LogError(authority + " " + gameObject.name);
 
-        }
+        
     }
     public void OnReady(bool old, bool newBool)
     {
