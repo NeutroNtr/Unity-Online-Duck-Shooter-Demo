@@ -20,10 +20,10 @@ public class LobbySettings : MonoBehaviour
 
 
 
-    public void CreatLobby(bool geçiþ)
+    public void CreatLobby(bool gecis)
     {
-        MainMenuUI.SetActive(!geçiþ);
-        CreatLobbyUI.SetActive(geçiþ);
+        MainMenuUI.SetActive(!gecis);
+        CreatLobbyUI.SetActive(gecis);
     }
     public void OnHostLobby(bool x)
     {
