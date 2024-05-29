@@ -24,9 +24,11 @@ public class Manager : NetworkManager
         {
             GameObject player = Instantiate(LobbyPlayerPrefab);
             NetworkServer.AddPlayerForConnection(conn, player);
+            
             CSteamID steamID = SteamMatchmaking.GetLobbyMemberByIndex(SteamLobby.LobbyId, numPlayers - 1);
             var playerName = player.GetComponent<PlayerLobby>();
             playerName.SteamIdChange(steamID.m_SteamID);
+            playerName.HasAut(conn);
         }
       
         Players.Add(conn.identity.gameObject);

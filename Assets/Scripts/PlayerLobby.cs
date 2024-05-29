@@ -23,8 +23,16 @@ public class PlayerLobby : NetworkBehaviour
     [SyncVar(hook = nameof(OnReady))]
     public bool Ready;
 
+
+
     public bool readyAllOf;
     protected Callback<AvatarImageLoaded_t> avatarImageLoaded;
+
+    public void HasAut(NetworkConnectionToClient conn)
+    {
+        Debug.Log("abine diyon");
+        netIdentity.AssignClientAuthority(conn);
+    }
 
     public void CheckReadyState()
     {
@@ -60,6 +68,7 @@ public class PlayerLobby : NetworkBehaviour
     }
     private void Start()
     {
+        
         transform.parent = GameObject.Find("Case").transform;
         manager = GameObject.Find("NetworkManager").GetComponent<Manager>();
         StartButton = GameObject.Find("Start").GetComponent<Button>();
