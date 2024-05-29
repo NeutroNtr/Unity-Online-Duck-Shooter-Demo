@@ -85,7 +85,11 @@ public class PlayerLobby : NetworkBehaviour
 
     private void Update()
     {
-        
+        if(authority == false)
+        {
+            Debug.LogError(authority);
+
+        }
     }
     public void OnReady(bool old, bool newBool)
     {
