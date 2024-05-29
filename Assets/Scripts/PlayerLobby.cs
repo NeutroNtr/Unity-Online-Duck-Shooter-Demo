@@ -86,7 +86,7 @@ public class PlayerLobby : NetworkBehaviour
     private void Update()
     {
         
-            Debug.LogError(authority + " " + gameObject.name);
+        Debug.LogError(authority + " " + gameObject.name);
 
         
     }
@@ -112,6 +112,7 @@ public class PlayerLobby : NetworkBehaviour
     {
         var cSteamId = new CSteamID(newText);
         NameText.text = SteamFriends.GetFriendPersonaName(cSteamId);
+        gameObject.name = SteamFriends.GetFriendPersonaName(cSteamId);
         int imageId = SteamFriends.GetLargeFriendAvatar(cSteamId);
          
         if (imageId == -1) { return; }
