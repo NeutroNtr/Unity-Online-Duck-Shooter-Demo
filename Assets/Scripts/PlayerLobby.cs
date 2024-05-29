@@ -60,6 +60,7 @@ public class PlayerLobby : NetworkBehaviour
     }
     private void Start()
     {
+        transform.parent = GameObject.Find("Case").transform;
         manager = GameObject.Find("NetworkManager").GetComponent<Manager>();
         StartButton = GameObject.Find("Start").GetComponent<Button>();
         ReadyButton = GameObject.Find("Ready").GetComponent<Button>();
@@ -106,7 +107,6 @@ public class PlayerLobby : NetworkBehaviour
     }
     private void OnSteamIdChange(ulong oldText, ulong newText)
     {
-        Debug.LogError(newText);
         var cSteamId = new CSteamID(newText);
         NameText.text = SteamFriends.GetFriendPersonaName(cSteamId);
         int imageId = SteamFriends.GetLargeFriendAvatar(cSteamId);
