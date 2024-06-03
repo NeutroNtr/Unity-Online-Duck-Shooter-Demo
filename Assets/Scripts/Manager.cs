@@ -79,15 +79,17 @@ public class Manager : NetworkManager
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
         // Geçerli sahne "Main Menu" ise "Lobby" sahnesine geçiþ yapýn
-        if (SceneManager.GetActiveScene().name == "Main Menu")
+        if(SceneManager.GetActiveScene().name == "Main Menu")
         {
             ServerChangeScene("Lobby");
-
         }
+        
+            
 
-        // Geçerli sahne "Lobby" ise oyuncuyu oluþturun ve sahneye ekleyin
-        if (SceneManager.GetActiveScene().name == "Lobby")
-        {
+       
+
+        
+       
 
             // Oyuncu objesini oluþturun ve sahneye ekleyin
             GameObject player = Instantiate(playerPrefab);
@@ -109,7 +111,7 @@ public class Manager : NetworkManager
             Players.Add(player);
             Debug.Log("Player added: " + player);
             Debug.Log("Total players: " + Players.Count);
-        }
+        
     }
 
    

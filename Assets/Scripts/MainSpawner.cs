@@ -10,6 +10,7 @@ public class MainSpawner : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.name = steamId.ToString();
         if (!authority) { return; }
         
         if(SceneManager.GetActiveScene().name == "Lobby")
@@ -24,7 +25,6 @@ public class MainSpawner : NetworkBehaviour
     {
         
     }
-    [Command]
     public void SpawnLobbyPlayer()
     {
         GameObject player = Instantiate(LobbyPlayer);
