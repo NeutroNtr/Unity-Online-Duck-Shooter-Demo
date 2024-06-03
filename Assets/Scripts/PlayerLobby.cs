@@ -28,11 +28,7 @@ public class PlayerLobby : NetworkBehaviour
     public bool readyAllOf;
     protected Callback<AvatarImageLoaded_t> avatarImageLoaded;
 
-    public void HasAut(NetworkConnectionToClient conn)
-    {
-        Debug.Log("abine diyon");
-        netIdentity.AssignClientAuthority(conn);
-    }
+
 
     public void CheckReadyState()
     {
@@ -96,7 +92,10 @@ public class PlayerLobby : NetworkBehaviour
     {
         
         Debug.LogError(authority + " " + gameObject.name);
-
+        if(isLocalPlayer)
+        {
+            Debug.LogError("BU LOCAL PLAYER" + " " + NameText.text);
+        }
         
     }
     public void OnReady(bool old, bool newBool)
@@ -157,7 +156,7 @@ public class PlayerLobby : NetworkBehaviour
         Ready = !Ready;
         CmdReadyButton();
     }
-    [Command]
+    [Command(requiresAuthority = false)]
     public void CmdReadyButton()
     {
         CheckReadyState();

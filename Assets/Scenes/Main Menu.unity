@@ -2014,7 +2014,7 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 6430406036403023537, guid: c6b8e775b378f674b89248f487c0bd23,
+  playerPrefab: {fileID: 154124036735028813, guid: ef72b16620fef334b9ce7741f4e66e5a,
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
@@ -2035,9 +2035,9 @@ MonoBehaviour:
   evaluationMethod: 0
   evaluationInterval: 3
   timeInterpolationGui: 0
+  Players: []
   LobbyPlayerPrefab: {fileID: 7182995674071294297, guid: e02e55941f7569e4a86a18a06a177050,
     type: 3}
-  Players: []
 --- !u!114 &1283131210
 MonoBehaviour:
   m_ObjectHideFlags: 0
