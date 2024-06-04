@@ -77,40 +77,42 @@ public class Manager : NetworkManager
 
 
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
-    {
+    {      
+
         // Geçerli sahne "Main Menu" ise "Lobby" sahnesine geçiþ yapýn
         if(SceneManager.GetActiveScene().name == "Main Menu")
         {
             ServerChangeScene("Lobby");
         }
-        
-            
-
-       
-
-        
-       
-
-            // Oyuncu objesini oluþturun ve sahneye ekleyin
+        if (SceneManager.GetActiveScene().name == "Lobby")
+        {
             GameObject player = Instantiate(playerPrefab);
-            NetworkServer.AddPlayerForConnection(conn, player);
+            NetworkServer.Spawn(player,conn );
 
             // SteamID'yi alýp oyuncuya atayýn
-            CSteamID steamID = SteamMatchmaking.GetLobbyMemberByIndex(SteamLobby.LobbyId, numPlayers - 1);
+            CSteamID steamID = SteamMatchmaking.GetLobbyMemberByIndex(SteamLobby.LobbyId, numPlayers );
             var playerName = player.GetComponent<MainSpawner>();
-            if (playerName != null)
-            {
-                playerName.steamId = steamID.m_SteamID;
-            }
-            else
-            {
-                Debug.LogError("PlayerLobby component is missing from the player prefab.");
-            }
+            Debug.Log(numPlayers);
+            Debug.Log(SteamLobby.LobbyId);
+
+            Debug.Log(steamID);
+                playerName.SpawnLobbyPlayer(conn, steamID.m_SteamID);
+            
+          
 
             // Oyuncu objesini Players listesine ekleyin
             Players.Add(player);
             Debug.Log("Player added: " + player);
             Debug.Log("Total players: " + Players.Count);
+        }
+
+
+
+
+
+
+        // Oyuncu objesini oluþturun ve sahneye ekleyin
+     
         
     }
 
